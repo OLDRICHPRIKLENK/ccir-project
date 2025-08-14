@@ -1,0 +1,62 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+# Cube boundaries
+space_min, space_max = -3, 3
+imag_min, imag_max = -1.5, 1.5
+time_min, time_max = 0, 10
+
+# Create cube vertices
+cube_vertices = np.array([
+    [space_min, imag_min, time_min],
+    [space_max, imag_min, time_min],
+    [space_max, imag_max, time_min],
+    [space_min, imag_max, time_min],
+    [space_min, imag_min, time_max],
+    [space_max, imag_min, time_max],
+    [space_max, imag_max, time_max],
+    [space_min, imag_max, time_max]
+])
+
+# Cube edges
+edges = [
+    (0,1),(1,2),(2,3),(3,0),
+    (4,5),(5,6),(6,7),(7,4),
+    (0,4),(1,5),(2,6),(3,7)
+]
+
+fig = plt.figure(figsize=(9,7))
+ax = fig.add_subplot(111, projection='3d')
+
+# Draw cube edges
+for e in edges:
+    xline = [cube_vertices[e[0],0], cube_vertices[e[1],0]]
+    yline = [cube_vertices[e[0],1], cube_vertices[e[1],1]]
+    zline = [cube_vertices[e[0],2], cube_vertices[e[1],2]]
+    ax.plot3D(xline, yline, zline, color='black')
+
+# Optional: add particles moving in x–t only, y=0
+m = 1.0
+c = 1.0
+dt = 0.05
+steps = 200
+momenta = [0.0, 2.0, -2.0]
+colors = ['red', 'blue', 'green']
+
+for p, col in zip(momenta, colors):
+    gamma = np.sqrt(1 + (p/(m*c))**2)
+    v = p / (gamma * m)
+    xs = [v*dt*k for k in range(steps+1)]
+    ys = [0 for _ in range(steps+1)]
+    zs = [dt*k for k in range(steps+1)]
+    ax.plot(xs, ys, zs, color=col)
+
+# Labels
+ax.set_xlabel("Real Space (x)")
+ax.set_ylabel("Imaginary Plane (y)")
+ax.set_zlabel("Time (t)")
+ax.set_title("3D Frame: Real Space, Imaginary Plane, Time")
+
+ax.view_init(elev=22, azim=30)
+plt.show()

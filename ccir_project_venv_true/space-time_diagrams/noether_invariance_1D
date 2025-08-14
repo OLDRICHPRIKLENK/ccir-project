@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+m = 1.0     # mass
+c = 1.0     # natural units
+dt = 0.05
+steps = 200
+
+# Particle momenta
+momenta = [0.0, 2.0, -2.0]
+colors = ['red', 'blue', 'green']
+
+plt.figure(figsize=(7,6))
+
+for p, col in zip(momenta, colors):
+    gamma = np.sqrt(1 + (p/(m*c))**2)
+    E = np.sqrt((m*c**2)**2 + (p*c)**2)
+    v = p / (gamma * m)  # velocity from momentum
+    
+    xs = [v*dt*k for k in range(steps+1)]
+    ts = [dt*k for k in range(steps+1)]
+    
+    plt.plot(xs, ts, color=col, label=f"p={p}, E={E:.2f}")
+
+plt.xlabel("Space (1D)")
+plt.ylabel("Time")
+plt.title("Worldlines in 1D Space–Time Diagram")
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(0, color='black', linewidth=0.5)
+plt.legend()
+plt.grid(True)
+plt.show()
