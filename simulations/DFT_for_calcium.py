@@ -353,4 +353,5 @@ def plot_results(r, rho, psi_orbs, occupations, Z, N_electrons, E_total, E_orbs)
 
 if __name__ == "__main__":
     # Example: Hydrogen atom test (Z=1, N=1)
-    dft_atom(Z=2, N_electrons=2)
+    dft_atom(Z=20, N_electrons=20)
+

@@ -1,0 +1,22 @@
+
+
+
+
+
+| Type                       | Variable / Function                 | Arguments → Output                               |
+| -------------------------- | ----------------------------------- | ------------------------------------------------ |
+| **Scalars**                | Mass $m$, Charge $q$                | —                                                |
+| **Functions (particle)**   | Position $\vec{r}(t)$               | $t \mapsto \vec{r}$                              |
+|                            | Velocity $\vec{v}(t)$               | $t \mapsto \vec{v}$                              |
+|                            | Momentum $\vec{p}(t)$               | $t \mapsto \vec{p}$                              |
+| **Functions (field)**      | Electric field $\vec{E}(\vec{r},t)$ | $(\vec{r},t) \mapsto \vec{E}$                    |
+|                            | Magnetic field $\vec{B}(\vec{r},t)$ | $(\vec{r},t) \mapsto \vec{B}$                    |
+| **Function (interaction)** | Force $\vec{F}(t)$                  | $(q, \vec{E}, \vec{B}, \vec{v}) \mapsto \vec{F}$ |
+
+
+
+
+Electric field:
+
+If only the electric field (E) is non-zero, and is constant in time, the field is said to be an electrostatic field. Similarly, if only the magnetic field (B) is non-zero and is constant in time, the field is said to be a magnetostatic field. However, if either the electric or magnetic field has a time-dependence, then both fields must be considered together as a coupled electromagnetic field using Maxwell's equations.
+
